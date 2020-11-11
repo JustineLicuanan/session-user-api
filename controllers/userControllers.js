@@ -64,7 +64,17 @@ const loginPOST = (req, res, next) => {
 const logoutGET = (req, res) => {};
 
 // View current logged in user profile
-const viewCurrentUserProfileGET = (req, res) => {};
+const viewCurrentUserProfileGET = (req, res) => {
+	const { _id, name, email, username, createdAt, updatedAt } = req.user;
+	res.json({
+		_id,
+		name,
+		email,
+		username,
+		createdAt,
+		updatedAt,
+	});
+};
 
 // View specific user profile
 const viewSpecificUserProfileGET = async (req, res) => {
