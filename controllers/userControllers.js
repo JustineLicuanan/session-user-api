@@ -15,9 +15,12 @@ const registerPOST = async (req, res) => {
 		// Save new user to database
 		await user.save();
 
-		res.status(201).json({
-			success: true,
-			message: 'User created successfully',
+		req.login(user, (err) => {
+			if (err) return next(err);
+			res.status(201).json({
+				success: true,
+				message: 'User created successfully',
+			});
 		});
 	} catch (error) {
 		let err = {};
