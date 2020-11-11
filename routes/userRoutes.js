@@ -5,7 +5,7 @@ const {
 	logoutGET,
 	viewCurrentUserProfileGET,
 	viewSpecificUserProfileGET,
-	viewAllUserProfileGET,
+	viewAllUserProfilesGET,
 	updateCurrentUserProfilePATCH,
 	changeCurrentUserPasswordPATCH,
 	deleteCurrentUserDELETE,
@@ -20,7 +20,7 @@ router.post('/login', loginPOST);
 router.get('/logout', logoutGET);
 router.get('/profile', viewCurrentUserProfileGET);
 router.get('/profile/:username', viewSpecificUserProfileGET);
-router.get('/', viewAllUserProfileGET);
+router.get('/', viewAllUserProfilesGET);
 router.patch('/profile/update', updateCurrentUserProfilePATCH);
 router.patch('/profile/update/password', changeCurrentUserPasswordPATCH);
 router.delete('/profile/delete', deleteCurrentUserDELETE);
