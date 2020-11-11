@@ -61,7 +61,13 @@ const loginPOST = (req, res, next) => {
 };
 
 // Logout a user
-const logoutGET = (req, res) => {};
+const logoutGET = (req, res) => {
+	req.logout();
+	res.json({
+		success: true,
+		message: 'User logged out successfully',
+	});
+};
 
 // View current logged in user profile
 const viewCurrentUserProfileGET = (req, res) => {
