@@ -121,7 +121,17 @@ const updateCurrentUserProfilePATCH = (req, res) => {};
 const changeCurrentUserPasswordPATCH = (req, res) => {};
 
 // Delete current logged in user
-const deleteCurrentUserDELETE = (req, res) => {};
+const deleteCurrentUserDELETE = async (req, res) => {
+	try {
+		await User.deleteOne({ username: req.user.username });
+		res.json({
+			success: true,
+			message: 'User deleted successfully',
+		});
+	} catch (err) {
+		res.status(400).json({ err });
+	}
+};
 
 module.exports = {
 	registerPOST,
