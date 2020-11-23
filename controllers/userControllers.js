@@ -119,7 +119,7 @@ const updateCurrentUserProfilePATCH = async (req, res) => {
 	const { name, email, username } = req.body;
 	try {
 		await User.updateOne(
-			{ username: req.user.username },
+			{ _id: req.user._id },
 			{
 				$set: {
 					name,
@@ -161,12 +161,35 @@ const updateCurrentUserProfilePATCH = async (req, res) => {
 };
 
 // Change current logged in user password
-const changeCurrentUserPasswordPATCH = (req, res) => {};
+const changeCurrentUserPasswordPATCH = async (req, res) => {
+	try {
+		req.user.password = req.body.password;
+		await req.user.save();
+
+		res.status(200).json({
+			success: true,
+			message: 'Password updated successfully',
+		});
+	} catch (error) {
+		let err = {};
+
+		// Handle validation errors
+		if (error._message === 'user validation failed') {
+			Object.keys(error.errors).forEach((errPath) => {
+				err[errPath] = error.errors[errPath].message;
+			});
+			return res.status(400).json({ err });
+		}
+
+		// Handle other errors
+		res.status(400).json({ err: error });
+	}
+};
 
 // Delete current logged in user
 const deleteCurrentUserDELETE = async (req, res) => {
 	try {
-		await User.deleteOne({ username: req.user.username });
+		await User.deleteOne({ _id: req.user._id });
 		res.json({
 			success: true,
 			message: 'User deleted successfully',
