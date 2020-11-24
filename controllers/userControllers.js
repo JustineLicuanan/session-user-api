@@ -130,7 +130,7 @@ const updateCurrentUserProfilePATCH = async (req, res) => {
 			{ runValidators: true }
 		);
 
-		res.status(200).json({
+		res.json({
 			success: true,
 			message: 'User updated successfully',
 		});
@@ -166,7 +166,7 @@ const changeCurrentUserPasswordPATCH = async (req, res) => {
 		req.user.password = req.body.password;
 		await req.user.save();
 
-		res.status(200).json({
+		res.json({
 			success: true,
 			message: 'Password updated successfully',
 		});
