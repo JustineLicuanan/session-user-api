@@ -18,7 +18,18 @@ const verifyUnauth = (req, res, next) => {
 	next();
 };
 
+// Verify if user is admin
+const verifyAdmin = (req, res, next) => {
+	if (req.user.role !== 1)
+		return res.status(401).json({
+			err: true,
+			message: "You don't have permission to view this resource",
+		});
+	next();
+};
+
 module.exports = {
 	verifyAuth,
 	verifyUnauth,
+	verifyAdmin,
 };
