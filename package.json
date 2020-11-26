@@ -1,7 +1,7 @@
 {
-	"name": "user-api-with-auth",
+	"name": "session-user-api",
 	"version": "1.0.0",
-	"description": "an amazing user API with session auth",
+	"description": "",
 	"main": "app.js",
 	"scripts": {
 		"start": "node app.js",
