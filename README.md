@@ -40,7 +40,6 @@ npm run dev
 # Register endpoint
 POST {{host}}/users/register
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "name": "",
@@ -54,7 +53,6 @@ Set-Cookie: {{sessionCookie}}
 # Login endpoint
 POST {{host}}/users/login
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "username": "",
@@ -65,13 +63,11 @@ Set-Cookie: {{sessionCookie}}
 
 # Logout endpoint
 GET {{host}}/users/logout
-Set-Cookie: {{sessionCookie}}
 
 ###
 
 # View current logged in user profile endpoint
 GET {{host}}/users/profile
-Set-Cookie: {{sessionCookie}}
 
 ###
 
@@ -88,7 +84,6 @@ GET {{host}}/users
 # Update current logged in user profile endpoint
 PATCH {{host}}/users/profile/update
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "name": "",
@@ -101,7 +96,6 @@ Set-Cookie: {{sessionCookie}}
 # Change current logged in user password endpoint
 PATCH {{host}}/users/profile/update/password
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "password": ""
@@ -111,7 +105,6 @@ Set-Cookie: {{sessionCookie}}
 
 # Delete current logged in user endpoint
 DELETE {{host}}/users/profile/delete
-Set-Cookie: {{sessionCookie}}
 ```
 
 ### `/admin` Endpoints
@@ -122,7 +115,6 @@ To access `/admin` endpoints, first you have to create an admin user. To create 
 # Create user endpoint
 POST {{host}}/admin/create
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "role": 4,
@@ -136,20 +128,17 @@ Set-Cookie: {{sessionCookie}}
 
 # View specific user profile endpoint
 GET {{host}}/admin/view/:username
-Set-Cookie: {{sessionCookie}}
 
 ###
 
 # View all user profiles endpoint
 GET {{host}}/admin/view
-Set-Cookie: {{sessionCookie}}
 
 ###
 
 # Update specific user profile endpoint
 PATCH {{host}}/admin/update/:username
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "role": 4,
@@ -163,7 +152,6 @@ Set-Cookie: {{sessionCookie}}
 # Change specific user password endpoint
 PATCH {{host}}/admin/update/password/:username
 Content-Type: application/json
-Set-Cookie: {{sessionCookie}}
 
 {
    "password": ""
@@ -173,7 +161,6 @@ Set-Cookie: {{sessionCookie}}
 
 # Delete specific user endpoint
 DELETE {{host}}/admin/delete/:username
-Set-Cookie: {{sessionCookie}}
 ```
 
 ## Built With
