@@ -15,11 +15,21 @@ const registerPOST = async (req, res) => {
 		// Save new user to database
 		await user.save();
 
+		const { _id, role, createdAt, updatedAt } = user;
 		req.login(user, (err) => {
 			if (err) return next(err);
 			res.status(201).json({
 				success: true,
 				message: 'User created successfully',
+				user: {
+					_id,
+					role,
+					name: user.name,
+					email: user.email,
+					username: user.username,
+					createdAt,
+					updatedAt,
+				},
 			});
 		});
 	} catch (error) {
@@ -53,11 +63,22 @@ const loginPOST = (req, res, next) => {
 	passport.authenticate('local', (err, user, info) => {
 		if (err) return next(err);
 		if (!user) return res.status(400).json(info);
+
+		const { _id, role, name, email, username, createdAt, updatedAt } = user;
 		req.login(user, (error) => {
 			if (error) return next(error);
 			res.json({
 				success: true,
 				message: 'User logged in successfully',
+				user: {
+					_id,
+					role,
+					name,
+					email,
+					username,
+					createdAt,
+					updatedAt,
+				},
 			});
 		});
 	})(req, res, next);
@@ -74,9 +95,10 @@ const logoutGET = (req, res) => {
 
 // View current logged in user profile
 const viewCurrentUserProfileGET = (req, res) => {
-	const { _id, name, email, username, createdAt, updatedAt } = req.user;
+	const { _id, role, name, email, username, createdAt, updatedAt } = req.user;
 	res.json({
 		_id,
+		role,
 		name,
 		email,
 		username,
