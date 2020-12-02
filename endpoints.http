@@ -1,4 +1,5 @@
 @host = http://127.0.0.1:{{$dotenv PORT}}
+@username = REPLACE_THIS_WITH_USERNAME
 @sessionCookie = REPLACE_THIS_WITH_SESSION_COOKIE
 
 # /users ENDPOINTS
@@ -41,7 +42,7 @@ Set-Cookie: {{sessionCookie}}
 ###
 
 # View specific user profile endpoint
-GET {{host}}/users/profile/:username
+GET {{host}}/users/profile/{{username}}
 
 ###
 
@@ -97,7 +98,7 @@ Set-Cookie: {{sessionCookie}}
 ###
 
 # View specific user profile endpoint
-GET {{host}}/admin/view/:username
+GET {{host}}/admin/view/{{username}}
 Set-Cookie: {{sessionCookie}}
 
 ###
@@ -109,7 +110,7 @@ Set-Cookie: {{sessionCookie}}
 ###
 
 # Update specific user profile endpoint
-PATCH {{host}}/admin/update/:username
+PATCH {{host}}/admin/update/{{username}}
 Content-Type: application/json
 Set-Cookie: {{sessionCookie}}
 
@@ -123,7 +124,7 @@ Set-Cookie: {{sessionCookie}}
 ###
 
 # Change specific user password endpoint
-PATCH {{host}}/admin/update/password/:username
+PATCH {{host}}/admin/update/password/{{username}}
 Content-Type: application/json
 Set-Cookie: {{sessionCookie}}
 
@@ -134,5 +135,5 @@ Set-Cookie: {{sessionCookie}}
 ###
 
 # Delete specific user endpoint
-DELETE {{host}}/admin/delete/:username
+DELETE {{host}}/admin/delete/{{username}}
 Set-Cookie: {{sessionCookie}}

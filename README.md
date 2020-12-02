@@ -72,7 +72,7 @@ GET {{host}}/users/profile
 ###
 
 # View specific user profile endpoint
-GET {{host}}/users/profile/:username
+GET {{host}}/users/profile/{{username}}
 
 ###
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 ###
 
 # View specific user profile endpoint
-GET {{host}}/admin/view/:username
+GET {{host}}/admin/view/{{username}}
 
 ###
 
@@ -137,7 +137,7 @@ GET {{host}}/admin/view
 ###
 
 # Update specific user profile endpoint
-PATCH {{host}}/admin/update/:username
+PATCH {{host}}/admin/update/{{username}}
 Content-Type: application/json
 
 {
@@ -150,7 +150,7 @@ Content-Type: application/json
 ###
 
 # Change specific user password endpoint
-PATCH {{host}}/admin/update/password/:username
+PATCH {{host}}/admin/update/password/{{username}}
 Content-Type: application/json
 
 {
@@ -160,7 +160,7 @@ Content-Type: application/json
 ###
 
 # Delete specific user endpoint
-DELETE {{host}}/admin/delete/:username
+DELETE {{host}}/admin/delete/{{username}}
 ```
 
 ## Built With
