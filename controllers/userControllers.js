@@ -212,6 +212,8 @@ const changeCurrentUserPasswordPATCH = async (req, res) => {
 const deleteCurrentUserDELETE = async (req, res) => {
 	try {
 		await User.deleteOne({ _id: req.user._id });
+
+		req.logout();
 		res.json({
 			success: true,
 			message: 'User deleted successfully',
